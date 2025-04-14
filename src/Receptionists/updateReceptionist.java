@@ -3,6 +3,8 @@ package Receptionists;
 import Admins.ReceptionistManagement;
 import Main.Connector;
 import Main.Hospital;
+import utils.ReceptionistUtils;
+
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -51,32 +53,9 @@ public class updateReceptionist extends javax.swing.JFrame {
 
     public void loadData() {
         connection = Connector.ConnectDb();
-        String sql = "select count,joining,id,name,age,gender,blood,email,phone,address,status,username,password from receptionist";
-        try {
-            ps = connection.prepareStatement(sql);
-            rs = ps.executeQuery();
-            Object columnData[] = new Object[13];
-            while (rs.next()) {
-                columnData[0] = rs.getInt("count");
-                columnData[1] = rs.getString("joining");
-                columnData[2] = rs.getString("id");
-                columnData[3] = rs.getString("name");
-                columnData[4] = rs.getInt("age");
-                columnData[5] = rs.getString("gender");
-                columnData[6] = rs.getString("blood");
-                columnData[7] = rs.getString("email");
-                columnData[8] = rs.getString("phone");
-                columnData[9] = rs.getString("address");
-                columnData[10] = rs.getString("status");
-                columnData[11] = rs.getString("username");
-                columnData[12] = rs.getString("password");
-                defaultTableModel.addRow(columnData);
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-
+        ReceptionistUtils.loadReceptionistData(defaultTableModel, connection, true);
     }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
