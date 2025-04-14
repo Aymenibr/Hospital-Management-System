@@ -2,6 +2,8 @@ package Patient;
 
 import Main.Connector;
 import Main.Hospital;
+import utils.TableUtils;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -133,20 +135,8 @@ public class DeletePatient extends javax.swing.JFrame {
             }
         });
 
-        pDTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(pDTable);
+        TableUtils.setupDummyTable(pDTable, jScrollPane1, jPanel1, new String[] {"Title 1", "Title 2", "Title 3", "Title 4"});
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel1MouseClicked(evt);

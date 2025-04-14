@@ -2,6 +2,8 @@ package Receptionists;
 
 import Main.Connector;
 import Main.Hospital;
+import utils.TableUtils;
+
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -153,20 +155,8 @@ public class choosePatient extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pSTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(pSTable);
+TableUtils.setupDummyTable(pSTable, jScrollPane1, jPanel2, new String[] {"Title 1", "Title 2", "Title 3", "Title 4"});
 
-        jPanel2.setBackground(new java.awt.Color(0, 204, 204));
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel2MouseClicked(evt);
